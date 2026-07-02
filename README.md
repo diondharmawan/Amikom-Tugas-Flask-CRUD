@@ -1,12 +1,12 @@
-# 🚀 Tugas Praktikum CRUD: Flask + MySQL + AdminLTE
+# Tugas Praktikum CRUD: Flask + MySQL + AdminLTE
 
-Halo! 👋 Selamat datang di repositori saya. Ini adalah tempat saya nyimpen *source code* buat tugas praktikum mata kuliah pemrograman web. Di proyek ini, saya lagi belajar gimana caranya bikin fitur CRUD (Create, Read, Update, Delete) yang paling *basic* tapi super penting, pakai framework **Flask** di Python dan databasenya pakai **MySQL**. 
+Halo! Selamat datang di repositori saya. Ini adalah tempat saya nyimpen *source code* buat tugas praktikum mata kuliah pemrograman web. Di proyek ini, saya lagi belajar gimana caranya bikin fitur CRUD (Create, Read, Update, Delete) yang paling *basic* tapi super penting, pakai framework **Flask** di Python dan databasenya pakai **MySQL**. 
 
 Biar tampilannya nggak kaku-kaku amat dan kelihatan lebih pro, saya pakai template **AdminLTE** sama **Bootstrap**. Lumayan seru sih ngulik-ngulik cara nempelin template HTML ke Flask pakai Jinja2!
 
 ---
 
-## 🧑‍💻 Jurnal Belajar (Student's Log)
+## Jurnal Belajar (Student's Log)
 
 Jujur aja, pas awal ngerjain tugas ini rasanya lumayan pusing, apalagi pas nyambungin rute (routing) di Flask sama *query* SQL-nya. Tapi setelah diulik-ulik, konsepnya mulai masuk akal:
 1. **GET & POST:** Belajar kapan harus pakai GET (buat nampilin form/data) dan kapan pakai POST (buat ngirim data yang disubmit ke database).
@@ -17,7 +17,7 @@ Intinya, proyek ini bikin saya lumayan paham gimana alur data dari *browser* dik
 
 ---
 
-## ⚙️ Gimana Sih Alur Programnya?
+## Gimana Sih Alur Programnya?
 
 Biar lebih gampang ngebayangin alur kerjanya, saya iseng bikin *flowchart* sederhana pakai Mermaid.js di bawah ini:
 
@@ -36,7 +36,7 @@ graph TD
 
 ---
 
-## 🛠️ Cara Jalanin di Komputer Sendiri
+## Cara Jalanin di Komputer Sendiri
 
 Kalau kebetulan mampir dan pengen coba jalanin kode ini, ini langkah-langkahnya:
 
@@ -60,11 +60,11 @@ Kalau kebetulan mampir dan pengen coba jalanin kode ini, ini langkah-langkahnya:
    ```bash
    flask run
    ```
-   Tinggal buka `http://127.0.0.1:5000` di *browser*. Sip, jalan deh! 🎉
+   Tinggal buka `http://127.0.0.1:5000` di *browser*. Sip, jalan deh!
 
 ---
 
-## 👨‍🎓 Identitas Mahasiswa
+## Identitas Mahasiswa
 
 | Detail | Info |
 | :--- | :--- |
@@ -73,4 +73,4 @@ Kalau kebetulan mampir dan pengen coba jalanin kode ini, ini langkah-langkahnya:
 | **Prodi** | Teknik Komputer |
 | **Kampus** | Universitas Amikom Yogyakarta |
 
-*Dibuat dengan ☕ dan banyak error log di terminal.*
+*Dibuat dengan kopi dan banyak error log di terminal.*
