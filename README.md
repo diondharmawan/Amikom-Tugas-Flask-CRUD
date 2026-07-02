@@ -1,120 +1,76 @@
-# 📚 Flask-CRUD Mahasiswa Management System
+# 🚀 Tugas Praktikum CRUD: Flask + MySQL + AdminLTE
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
-![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?style=for-the-badge&logo=flask)
-![MySQL](https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-3.3.7-purple?style=for-the-badge&logo=bootstrap)
+Halo! 👋 Selamat datang di repositori saya. Ini adalah tempat saya nyimpen *source code* buat tugas praktikum mata kuliah pemrograman web. Di proyek ini, saya lagi belajar gimana caranya bikin fitur CRUD (Create, Read, Update, Delete) yang paling *basic* tapi super penting, pakai framework **Flask** di Python dan databasenya pakai **MySQL**. 
 
-Sistem Informasi Manajemen Data Mahasiswa sederhana yang mengimplementasikan operasi **CRUD** (Create, Read, Update, Delete) menggunakan **Flask (Python)** dan **MySQL**, serta dibalut dengan antarmuka profesional dari **AdminLTE**.
+Biar tampilannya nggak kaku-kaku amat dan kelihatan lebih pro, saya pakai template **AdminLTE** sama **Bootstrap**. Lumayan seru sih ngulik-ngulik cara nempelin template HTML ke Flask pakai Jinja2!
 
 ---
 
-## 🧑‍💻 Student's Log: Pemahaman Konsep
-Proyek ini dikembangkan sebagai bagian dari pembelajaran mendalam terkait integrasi antara backend berbasis Python (Flask) dan basis data relasional (MySQL). Konsep utama yang dieksplorasi dalam tugas ini adalah bagaimana sebuah aplikasi web merespons *HTTP Request* (GET dan POST), memproses data melalui *Routing*, dan menyajikannya secara dinamis menggunakan *Template Engine* (Jinja2). 
+## 🧑‍💻 Jurnal Belajar (Student's Log)
 
-Pendekatan menggunakan *framework* ringan seperti Flask memberikan fleksibilitas tinggi dan menuntut pemahaman logika rute yang kuat. Penggunaan AdminLTE sebagai antarmuka sangat membantu dalam menyajikan data tabular dengan estetika profesional tanpa membebani kompleksitas di sisi *frontend*.
+Jujur aja, pas awal ngerjain tugas ini rasanya lumayan pusing, apalagi pas nyambungin rute (routing) di Flask sama *query* SQL-nya. Tapi setelah diulik-ulik, konsepnya mulai masuk akal:
+1. **GET & POST:** Belajar kapan harus pakai GET (buat nampilin form/data) dan kapan pakai POST (buat ngirim data yang disubmit ke database).
+2. **Template Engine (Jinja2):** Ini ngebantu banget biar nggak nulis ulang kode HTML dari awal terus. Fitur `{% extends 'base.html' %}` bener-bener *lifesaver* buat bikin layout *dashboard* yang konsisten.
+3. **Database Connector:** Pakai `mysql-connector-python` ternyata lumayan gampang buat eksekusi *query* kayak `INSERT`, `UPDATE`, atau `DELETE` langsung dari Python.
 
----
-
-## ✨ Fitur Utama (Key Features)
-- 📝 **Create:** Menambahkan data mahasiswa baru ke dalam *database*.
-- 👁️ **Read:** Menampilkan seluruh data mahasiswa secara *real-time* dalam bentuk tabel.
-- ✏️ **Update:** Memperbarui data mahasiswa yang sudah ada berdasarkan NIM.
-- 🗑️ **Delete:** Menghapus data mahasiswa secara permanen.
-- 🎨 **Responsive UI:** Antarmuka responsif dan profesional menggunakan AdminLTE & Bootstrap.
+Intinya, proyek ini bikin saya lumayan paham gimana alur data dari *browser* dikirim ke *server*, diproses, disimpen ke *database*, terus ditampilin lagi ke *user*.
 
 ---
 
-## ⚙️ Cara Kerja Program (How It Works)
+## ⚙️ Gimana Sih Alur Programnya?
 
-Berikut adalah visualisasi alur logika (Flowchart) dari sistem Flask CRUD ini:
+Biar lebih gampang ngebayangin alur kerjanya, saya iseng bikin *flowchart* sederhana pakai Mermaid.js di bawah ini:
 
 ```mermaid
 graph TD
-    A([User / Browser]) -->|HTTP GET /| B{Flask Route: /}
-    B -->|Fetch All Data| C[(MySQL: db_kuliah)]
-    C -->|Return Rows| B
-    B -->|Render HTML| D[index.html]
+    A([Browser Mahasiswa]) -->|Buka Web (GET /)| B{Flask: app.py}
+    B -->|Ambil Data| C[(Database MySQL)]
+    C -->|Kirim Data| B
+    B -->|Render tabel| D[index.html]
     D --> A
 
-    A -->|HTTP GET /tambah| E[Form Tambah Data]
-    E -->|HTTP POST /proses_tambah| F{Flask Route: /proses_tambah}
-    F -->|INSERT INTO| C
-    F -->|Redirect /| B
-
-    A -->|HTTP GET /ubah/<nim>| G[Form Ubah Data]
-    G -->|HTTP POST /proses_ubah| H{Flask Route: /proses_ubah}
-    H -->|UPDATE| C
-    H -->|Redirect /| B
-
-    A -->|HTTP GET /hapus/<nim>| I{Flask Route: /hapus}
-    I -->|DELETE| C
-    I -->|Redirect /| B
+    A -->|Submit Form (POST)| E[Proses Tambah/Ubah]
+    E -->|INSERT / UPDATE SQL| C
+    E -->|Redirect ke Awal| B
 ```
 
 ---
 
-## 🛠️ Prasyarat & Instalasi
+## 🛠️ Cara Jalanin di Komputer Sendiri
 
-Pastikan sistem operasi Anda telah terinstal **Python 3**, **pip**, dan **MySQL/MariaDB Server**.
+Kalau kebetulan mampir dan pengen coba jalanin kode ini, ini langkah-langkahnya:
 
-1. **Clone Repositori:**
+1. **Clone dulu reponya:**
    ```bash
    git clone https://github.com/diondharmawan/Amikom-Tugas-Flask-CRUD.git
    cd Amikom-Tugas-Flask-CRUD
    ```
 
-2. **Persiapkan Database:**
-   - Masuk ke MySQL Command Line.
-   - Buat database `db_kuliah` dan *import* tabel `mahasiswa`. (Lihat instruksi di modul).
+2. **Siapin Database:**
+   Buka MySQL, bikin database namanya `db_kuliah`, terus bikin tabel `mahasiswa`. (Kalau mau gampang, *import* aja dari modul/instruksi yang ada).
 
-3. **Buat Virtual Environment & Install Dependensi:**
+3. **Bikin Virtual Environment (Biar Rapi):**
    ```bash
    python -m venv venv
    source venv/bin/activate
    pip install Flask mysql-connector-python
    ```
 
-4. **Jalankan Aplikasi:**
+4. **Jalanin Server Flask:**
    ```bash
    flask run
    ```
+   Tinggal buka `http://127.0.0.1:5000` di *browser*. Sip, jalan deh! 🎉
 
 ---
 
-## 🚀 Cara Penggunaan (Usage)
-1. Setelah `flask run` dieksekusi, buka browser dan akses `http://127.0.0.1:5000`.
-2. Anda akan melihat halaman **Data Mahasiswa**.
-3. Klik tombol **Tambah Data** untuk mencoba memasukkan NIM, Nama, dan Asal.
-4. Klik tombol **Ubah** atau **Hapus** pada tabel untuk mencoba fungsi Update dan Delete.
+## 👨‍🎓 Identitas Mahasiswa
 
----
-
-## 📂 Struktur Direktori
-```text
-Amikom-Tugas-Flask-CRUD/
-├── app.py                # File utama backend Flask
-├── static/               # File aset statis (CSS, JS, Image, Font)
-│   ├── css/
-│   ├── font/
-│   ├── img/
-│   └── js/
-├── templates/            # File template HTML (Jinja2)
-│   ├── base.html         # Layout utama
-│   ├── index.html        # Dashboard / View Data
-│   ├── tambah.html       # Form Tambah
-│   └── ubah.html         # Form Update
-└── README.md             # Dokumentasi Proyek
-```
-
----
-
-## 👨‍🎓 Identitas Kontributor
-
-| Informasi | Keterangan |
+| Detail | Info |
 | :--- | :--- |
 | **Nama** | Fransiscus Asisi Kananda Herdion Dharmawan |
 | **NIM** | 24.83.1107 |
-| **Program Studi** | Teknik Komputer |
-| **Institusi** | Universitas Amikom Yogyakarta |
-| **GitHub Repo** | [Amikom-Tugas-Flask-CRUD](https://github.com/diondharmawan/Amikom-Tugas-Flask-CRUD) |
+| **Prodi** | Teknik Komputer |
+| **Kampus** | Universitas Amikom Yogyakarta |
+
+*Dibuat dengan ☕ dan banyak error log di terminal.*
