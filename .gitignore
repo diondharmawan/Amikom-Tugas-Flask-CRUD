@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.log
+*.zip
+*.aux
+*.toc
+*.out
+*.synctex.gz
+*.pdf
+.env

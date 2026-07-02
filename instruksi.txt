@@ -1,0 +1,810 @@
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0001.jpg ===
+Flask-CRUD
+
+Create, Read, Update, Delete
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0002.jpg ===
+Pre-requisite
+
+* SQL Engine. [Services: active]
+* Database used. [db_kuliah.sql]
+* SQL Connection
+
+¢ Flask Installation
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0003.jpg ===
+Mengaktifkan SQL
+
+* Buka XAMPP Control Panel
+° Aktifkan Service Apache dan Mysal.
+
+a XAMPP Contral Panel v3.2.4 [ Compiled: Jun Sth 2019 ] = oO x
+XAMPP Control Panel v3.2.4
+Modules >
+Service Module _PID(s) Portis) Actions ei
+
+Apache Start A Config Logs Em Shell
+
+OL Start A Config Logs (Explorer
+FileZilla Start A Config Logs © Services
+Mercury Start A Config Logs © Help
+Tomcat Start Ad Config Logs ow
+
+(xampp Control Panel v3.2.4 [ Compiled: Jun 5th 2019 ]
+
+f=] XAMPP Control Panel v3.2.4
+
+Modules
+
+Service __ Module
+
+Cor
+
+Stop Cor
+
+FileZilla Start Cor
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0004.jpg ===
+Mengakses MySQL
+
+¢ Buka browser
+
+¢ Pada address bar ketikkan alamat url:
+http://localhost/phpmyadmin
+
+¢ Default account
+¢ Username : root
+¢ Password
+
+(no passwd)
+
+BR phpMyAdmin
+
+© localhost/phpmyadmin/
+
+phpMyAdmin
+
+Welcome to phpMyAdmin
+
+—| Language
+
+English v
+
+Login @
+
+Username:
+| root |
+
+Password: +4
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0005.jpg ===
+Tampilan Awal Halaman PhpMyadmin
+
+localhost:81 / 127.0.0.1 | phpMy/
+
+phpMyAdmin
+agenee 3 Databases [J SQL Gy Status = Useraccounts i Export i Import g* Settings l_Replication >) Variables = Charsets (@ Engines Plugins
+
+Recent Favorites
+
+Cm) General settings
+
+Database server
+
+| New ;
+
+Puy 18.83.1234 Server. 127.0.0.1 via TCPIIP
+
+(£5 db_movies ea type Ate venmunes
+
+(£9 information_schems oe ee)
+
+BB mysa ever version: 10.4 6-ManaDB - mariadb org binary distribution
+661.5 porformance_schema Protocol version: 10
+
+23 phomyadmin User: root@localhost
+
+ace ‘Server charsst'cp1252 West European (latint)
+
+LG test
+
+= Server connection collation «> | utfémb4_unicode_ci
+
+# language @ English v
+
+@Theme: | pmahomme ~ Web server
+
+= Fontsize. 82% v = Apache/2.4.39 (Win64) OpenSSLI1.1.1c PHP/7.3.8
+
++ Database client version: libmysql - mysqind 5 0.12.dev - 20150407 - Sid
+7cc7.cc96067516d7 265cI0I2671480187c2abb23 $
+
++ PHP extension: mysali @ curl @ mbsting @
+
++ PHP version: 7.3.8
+
+f More setings
+
+phpMyAdmin
+
+‘+ Version information: 4.9.0.1, latest stable version: 5.0.4
+‘= Documentation
+
++ Official Homepage
+
+= Contribute
+
+= Get support
+
++ List of changes
+
+= License
+
+(mw Console|
+
+a
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0006.jpg ===
+Import SQL
+
+¢ Siapkan database yang akan digunakan.
+
+¢ Buat database dengan nama db_kuliah.
+* Import database db_kuliah.sq}.
+
+= »>
+
+db_kuliah.sq|
+
+Oo0oodoo0
+
+Database a
+1234_prodi
+
+1234_reviewpbdtk01
+db_cucimotor
+db_kuliah
+
+db_prodi
+
+Collation
+
+utf8mb4_general_ci
+utf8mb4_general_ci
+utf8mb4_general_ci
+utf8mb4_general_ci
+
+utf8mb4_general_ci
+
+Action
+
+a=| Check privileges
+a=, Check privileges
+==| Check privileges
+a=, Check privileges
+
+a=| Check privileges
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0007.jpg ===
+Import SQL
+
+¢ Pastikan database db_kuliah memiliki struktur table berikut:
+
+# Name Type Collation Attributes Null Default Comments Extra Action
+O 1 nim P varchar(15) _latin1_swedish_ci No None @ Change @Drop w More
+(J 2 nama varchar(50) _ latin1_swedish_ci No None o@ Change @Drop w More
+OO 3 asal varchar(30) _ latin1_swedish_ci No None @ Change @Drop w More
+* Dan data sebagai berikut: nim nama azal _
+18.83.1233 Salsabila Bantul
+18.83.1234 Rahmadi Sleman
+18.83.1235 Sukarwo Kulon Progo
+18.83.1236 Pambudi Kulon Progo
+18.83.1237 Putri Amalia Yogyakarta
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0008.jpg ===
+Flask Installation
+
+* pastikan Flask telah terinstall dengan baik, sehingga Ketika servicenya
+
+diaktifkan menggunakan perintah:
+
+¢ Maka Flask dapat menampilkan Hello World pada Browser.
+
+from flask import Flask
+
+@ 127.0.0.1:5000 4 +
+
+1
+
+2
+
+3 app = Flask(__name__)
+* & CGC © 127.0.0.1:5000
+Is
+
+@app.route('/')
+6 Vv def index():
+7 return 'HeLllo World'
+8
+9 if __name__ =
+10 app-run()
+11
+
+Hello World
+
+= '  main__':
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0009.jpg ===
+Open Connection SQL - Flask
+
+* Pastikan Package telah terinstall.
+
+pip install mysql-connector A
+
+Pastikan menginstal mysql-connector
+pada virtualenvironment
+
+(flaskCrud)|}C:\Users\Win-1@ Presensi\Documents\FlaskCRUD>pip install mysql-connector
+orrecting-mysql-connector
+
+Downloading mysql-connector-2.2.9.tar.gz (11.9 MB)
+
+| | 11.9 5 79 kB/s
+
+Preparing metadata (setup.py) ... done
+Building wheels for collected packages: mysql-connector
+Building wheel for mysql-connector (setup.py) ... /
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0010.jpg ===
+Open Connection SQL - Flask
+
+from flask import Flask —> Import library mysql-connector
+
+from mysql import connector
+Melakukan open connection, menggunakan
+
+app = Flask(__name__) perintah connector.connect diikuti dengan
+-—— informasi mengenai host, user, password
+untuk mengakses mysql. Serta nama database
+
+db = connector.connect(
+
+host = 'localhost', yang akan digunakan pada web apps.
+
+user = 'root',
+
+passwd = ''7
+
+database= 'db_kuliah' Untuk mengetahui keberhasilan proses open
+connection.
+
+if db.is_connected():
+print('open connection successful’ )
+
+(flaskCrud) C:\Users\Win-1@ Presensi\Documents\FlaskCRUD>flask run
+@app.route('/') * Serving Flask app ‘app.py' (lazy loading)
+* Environment: development
+
+def index(): * Debug mode: on
+return 'Hello Wortd' lopen connection successful
+* Restarting with stat
+if name =n main ts lopen connection successful
+ma Sonn — — * Debugger is active!
+app-run() * Debugger PIN: 940-927-594
+
+* Running on http 27.0.0.1:5000/ (Press CTRL+C to quit)
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0011.jpg ===
+© Halaman Tbah Data Mabaso xe BE
+
+€-> SO 1270045000;:3mb=h/ Qaenre
+
+—— Mahasiswa Teka Komputer
+
+No Induk Mahasiswa
+
+* Goal : Dashboard [Administration Page] vi
+
+L
+5 L - a x Nama Lengkap
+«Page Tittle bn
+€ > GE © 127.001:5000 << “RE
+Asal
+
+> Data Mahasiswa ‘teknik Komputer Hota asal |
+a a a a = a a a a as i a
+
+Content Title i | aa
+
+Main Content ———— oe
+.
+> © 127.0.0.1:5000/ubah/18.83.1233 BQer 2:
+18.83.1233 Salsabila Bantul . ;
+S Data Mahasiswa ‘eknixKompute
+.
+18.83.1234 Rahmadi Sleman Ubah FEES ——— ae
+b Ubah Data Mahasiswa
+No Induk Mahasiswa
+18.83.1235 Sukarwo Kulon Progo .
+18.83.1233
+. .
+18.83.1236 Pambudi Kulon Progo Nama Lengkap
+Salsabila
+: : F-
+18.83.1237 Putri Amalia Yogyakarta pom
+| j Bantul aq
+a . a o a a a . a . a . .
+
+| Cancel Submi
+eee
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0012.jpg ===
+Flask CRUD
+
+¢ Administration Page - 4 File HTML —
+¢ base.html
+¢ index.html | R
+* tambah.html —> 4 :
+¢ ubah.html jemplates
+
+* Karena akan mengakses file html, maka perlu mempersiapkan terlebih dahulu
+directory templates, dan meletakkan ke-4 file html [base.html, index.html,
+tambah.html, dan ubah.html] pada directory tersebut
+
+¢ Untuk menampilkan hasilnya, perlu. menggunakan fungsi render_template
+sehingga perlu import fungsi tersebut pada main file [app.py]
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0013.jpg ===
+Flask CRUD
+
+* base.html
+
+1 <!DOCTYPE html>
+
+2¥ <html lLang="en">
+
+3 ¥ <head>
+
+4 <meta charset="UTF-8"> A
+
+5 <! title area > Page Tittle
+
+6 <title> Halaman {% block judul%} {% endblock %}f</title>
+
+Lf
+
+8 <!—— G95 area. ——>
+
+9 <link rel="stylesheet" type="text/css" href="{{url_for('static',
+filename='css/bootstrap.min.css')}}">
+
+10 <link rel="stylesheet" type="text/css" href="{{url_for('static',
+filename='css/AdminLTE.css')}}">
+
+11
+
+12 <!-- CSS font area -->
+
+13 <link rel="stylesheet" type="text/css" href="{{url_for('static',
+filename='font/sansPro.css')}}">
+
+14 </head>
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0014.jpg ===
+Flask CRUD
+
+* base.html
+
+16 ¥ <body>
+: By content are:
+<div class="content-wrapper">
+<section class="content-header">
+<hi>
+<a href="/">
+<img src="{{ url_for('static', filename='img/amikom_logo.png') }}"
+style="width: 40px;">
+</a>
+2 Data Mahasiswa
+2¢ <small>Teknik Komputer</small>
+[ </hi>
+28 </section>
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0015.jpg ===
+Flask CRUD
+
+* base.html
+
+29 <section class="content">
+
+30 <div class="row">
+
+31 <div class="col-xs-12">
+
+32 <div class="box"> .
+33 <div_class="box-header"> Content Tittle
+34 {% block JudulKonten %} {% endblock %}
+35 </div>
+
+36
+
+37 <!-- data table (database) area -->
+
+38 <div_class="box-body">
+
+39 {% block konten %} {% endblock %}
+
+40 s/div> Main Content
+41 </div>
+
+42 </div>
+
+43 </div>
+
+44 </section>
+
+45 </div>
+
+46
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0016.jpg ===
+Flask CRUD
+
+* base.html
+
+I t
+
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
+
+</body>
+</html>
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0017.jpg ===
+OMNDAKHEWNHe
+
+’
+
+{% extends 'base.html' %}
+
+index.html
+
+{% block judul %} Data Mahasiswa {% endblock %}
+
+{% block JudulKonten %}
+<a href="/tambah/" class="btn-btn-info"> Tambah Data </a>
+
+{% endblock %}
+
+{% block konten %}
+<table class="table table-bordered table-hover">
+
+<thead>
+<tr>
+
+<th>NIM</th>
+
+<th>Nama</th>
+<th>Asal</th>
+<th>Aksi</th>
+
+</tr>
+</thead>
+<tbody>
+
+{% for row in hasil %}
+
+<tr>
+<td>{{row.0}}</td>
+<td>{{row.1}}</td>
+<td>{{row.2}}</td>
+<td>
+<a href="/ubah/{{row.0}}" class="btn btn-warning"> Ubah </a>
+<a href="/hapus/{{row.0}}" class="btn btn-danger"
+onclick="return confirm('yakin akan menghapus {{row.1}} ?')"> Hapus </a>
+</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+</table>
+{% endblock %}
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0018.jpg ===
+1 from flask import Flask, render_template
+2 from flask import request, redirect, url_for
+Flask CRUD 3 from mysql import connector
+4
+5 app = Flask(__name__)
+e 6
+aPpP.Py 7 ¥ db = connector.connect(
+8 host = "Localhost",
+9 user = “root,
+10 passwd =",
+11 database = "db_kuliah"
+12 )
+13 ¥ if db.is_connected():
+14 print("Berhasil Terhubung ke Database")
+15
+16 G@a iis
+17 ¥ def halaman_awal():
+
+18 cur = db.cursor()
+Menampilkan data 19 cur.execute("select * from mahasiswa")
+dari Database 20 res = cur.fetchall()
+
+cur.close()
+return render_template('index.html', hasil=res)
+
+if _ _
+25 app.run()
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0019.jpg ===
+Running Flask
+
+¢ Jalankan flask untuk melihat hasilnya
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0020.jpg ===
+Tambah Data ke Database — [Insert Data]
+
+* Buat routing di app.py untuk mengakses halaman Tambah Data.
+
+@app.route('/tambah/')
+def tambah_data():
+return render_tempLlate('tambah.htmL')
+
+¢ Pastikan pada folder templates sudah ada file html dengan nama
+tambah.html
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0021.jpg ===
+ANDNDAWNHE
+
+{% extends 'base.htmLl' %} tambah html
+{% block judul %} Tambah Data Mahasiswa {% endblock %}
+
+{% block JudulKonten %}
+<h3 class="box-title"> Tambah Data Mahasiswa </h3>
+{% endblock %}
+
+{% block konten%}
+<form action="{{url_for('proses_tambah')}}" method="POST">
+<div class="form-group">
+<label>No Induk Mahasiswa</label>
+<input type="text" name="nim" class="form-control" placeholder="nim">
+</div>
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" name="nama" class="form-control" placeholder="nama">
+</div>
+<div class="form-group">
+<label>Asal</label>
+<input type="text" name="asal" class="form-control" placeholder="kota asal">
+</div>
+<div class="box-footer">
+<button type="reset" class="btn btn-default"> Cancel </button>
+<button type="submit" class="btn btn-primary pull-right"> Submit </button>
+</div>
+</form>
+{% endblock %}
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0022.jpg ===
+Proses Tambah Data
+
+¢ Import request dan redirect dan url_for pada app.py
+
+from flask import request, redirect, url_for
+
+¢ Buat routing untuk proses ketika data akan ditambahkan ke database
+melalui app.py.
+
+@app.route('/proses_tambah/', methods=['POST'])
+def proses_tambah():
+
+nim = request. form['nim']
+
+nama request. form['nama']
+
+asal request. form['asal']
+cur = db.cursor()
+cur.execute('INSERT INTO mahasiswa (nim, nama, asal) VALUES (%s, %s, %s)', (nim, nama, asal))
+
+db.commit()
+return redirect(url_for('halaman_awal' ))
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0023.jpg ===
+Running Flask
+
+¢ Jalankan flask untuk melihat hasilnya
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0024.jpg ===
+Mengubah Data pada Database —
+[Update Data]
+
+* Buat routing pada app.py untuk mengarahkan ke halaman ubah data
+dan pemrosesan ubah data.
+
+@app.route('/ubah/<nim>', methods=['GET'])
+def ubah_data(nim):
+
+cur = db.cursor()
+cur.execute('select * from mahasiswa where nim=%s', (nim,))
+res = cur.fetchall()
+
+cur.close()
+
+return render_template('ubah.htmLl', hasil=res)
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0025.jpg ===
+Mengubah Data pada Database —
+[Update Data]
+
+*Buat halaman ubah.html pada folder templates yang digunakan
+untuk menampilkan data yang akan diubah.
+
+{% extends 'base.html' %}
+
+{% block judul %} Ubah Data Mahasiswa {% endblock %}
+
+{% block JudulKonten %}
+<h3 class="box-title"> Ubah Data Mahasiswa </h3>
+
+{% endblock %}
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0026.jpg ===
+9
+
+{% block konten%} ubah.html
+
+10 ¥ <form action="{{url_for('proses_ubah')}}" method="POST">
+
+an
+s 4
+13
+14
+rhs
+16
+17¥
+18
+19
+20
+29
+22
+2s
+
+24
+23
+26
+LT
+28
+29
+30
+KEE
+32
+
+{% for row in hasil %}
+<div class="form-group">
+<label>No Induk Mahasiswa</label>
+<input type="hidden" name="nim_ori" value="{{ row. }}">
+<input type="text" name="nim" class="form-control" placeholder="nim" value="{{row.0}}">
+</div>
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" name="nama" class="form-control" placeholder="nama" value="{{row.1}}">
+
+</div>
+
+<div class="form-group">
+<label>Asal</label>
+<input type="text" name="asal" class="form-control" placeholder="kota asal" value="
+{{row.2}}">
+
+</div>
+
+{% endfor %}
+
+<div class="box-footer">
+
+<button type="reset" class="btn btn-default"> Cancel </button>
+
+<button type="submit" class="btn btn-primary pull-right"> Submit </button>
+</div>
+
+</form>
+{% endblock %}
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0027.jpg ===
+Proses ubah Data
+
+@app.route('/proses_ubah/', methods=['POST']) app.py
+def proses_ubah():
+
+no_mhs = request. form['nim_ori']
+
+nim = request. form['nim']
+
+nama request. form['nama']
+
+asal request. form['asal']
+
+cur = db.cursor()
+
+sql = "UPDATE mahasiswa SET nim=%s, nama=%s, asal=%s WHERE nim=%s"
+
+value = (nim, nama, asal, no_mhs)
+
+cur.execute(sql, value)
+
+db.commit()
+
+return redirect(url_for('halaman_awalL') )
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0028.jpg ===
+Running Flask
+
+¢ Jalankan flask untuk melihat hasilnya
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0029.jpg ===
+Menghapus Data di Database — [Delete Data]
+
+* Buat URL routing pada app.py yang digunakan untuk mengarahkan ke
+proses hapus data
+
+@app.route('/hapus/<nim>', methods=['GET'])
+
+def hapus_data(nim):
+cur = db.cursor()
+cur.execute('DELETE from mahasiswa where nim=%s', (nim,))
+db.commit()
+
+return redirect(url_for('halaman_awal'))
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0030.jpg ===
+Mempercantik Tampilan Web
+
+¢ Buat directory dengan nama static.
+
+* Copy file css, js, img dan font yang ada pada directory assets ke
+folder static.
+
+| FlaskCRUD
+| idea
+| _pycache_ | css
+| static c D : -> | font
+| templates / img
++ venvCRUD | js
+
+® app.py
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0031.jpg ===
+Mempercantik Tampilan Web
+
+* Pada file base.html kita menggunakan file CSS, font, JS serta Image.
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/AdminLTE.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='font/sansPro.css')}}">
+
+<a href="/">
+<img src="{{ url_for('static', filename='img/amikom_logo.png') }}"
+style="width: 40px;">
+
+</a>
+
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
+
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0032.jpg ===
+Mempercantik Tampilan Web
+
+* Pada file base.html kita menggunakan file CSS, font, JS serta Image.
+
+¢ Maka letakkan file yang kita gunakan pada folder static, sesuai
+tempatnya masing-masing.
+
+l css) ————> | AdminLTE.css
+bootstrap.min.css
+| font
+: »> ®  sansPro.css
+l img
+static i js fal amikom_logo.png
+
+is) adminlte.min,js
+
+(3) bootstrap.min.js
+=== TP10c. Flask-CRUD-crudImplement (1)_page-0033.jpg ===
+Running Flask
+
+¢ Jalankan flask untuk melihat hasilnya
+=== instruksi_terakhir.png ===
+20252-[24S1TKO2-Pemrogr(TKO21)]-P / Pertemuan 11 / Tugas Praktikum 11
+
+(1)
+
+Opens: Thursday, 2 July 2026, 1:45 PM
+Due: Thursday, 2 July 2026, 3:05 PM
+
+Kumpulkan source code beserta screenshot CRUD. kumpulkan dengan nama p11_CRUD_xxxx.
+
